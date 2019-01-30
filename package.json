@@ -1,0 +1,27 @@
+{
+  "name": "@thrivehive/segment",
+  "version": "1.0.0",
+  "description": "Implements segment.io tracking to @thrivehive projects",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thrivehive/segment.git"
+  },
+  "author": "Lauren Paik <laurpaik@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/thrivehive/segment/issues"
+  },
+  "homepage": "https://github.com/thrivehive/segment#readme",
+  "dependencies": {
+    "@thrivehive/eslint-config-node": "^1.0.4"
+  },
+  "devDependencies": {
+    "eslint": "^5.12.1",
+    "eslint-config-airbnb-base": "^13.1.0",
+    "eslint-plugin-import": "^2.16.0"
+  }
+}
