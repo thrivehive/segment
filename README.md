@@ -119,5 +119,6 @@ Example usage:
     </button>
   </div>
 </template>
+```
 
-Note: Data passed to directive must be an object reference.
+**Note:** Data passed to directive must be an object reference.
