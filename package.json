@@ -18,7 +18,7 @@
   "homepage": "https://github.com/thrivehive/segment#readme",
   "dependencies": {},
   "devDependencies": {
-    "@thrivehive/eslint-config-node": "^1.0.4",
+    "@thrivehive/eslint-config-node": "^1.2.1",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-import": "^2.16.0"
