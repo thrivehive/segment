@@ -15,6 +15,8 @@ npm install @thrivehive/segment
 
 ## Setup
 
+Inject the official segment.js script into the page with your write key: 
+
 ```js
 import { setup } from '@thrivehive/segment';
 
@@ -93,26 +95,27 @@ router.afterEach((to) => {
 
 ## Vue directive
 
-More info about [Vue directives](https://vuejs.org/v2/guide/custom-directive.html)
+More info about [Vue directives](https://vuejs.org/v2/guide/custom-directive.html).
+
+The directive argument is the event name you want to listen for. Note that this is a native DOM event listener, not a Vue event.
 
 Setup the directive:
 
 ```js
 import Vue from 'vue';
-import { vueSegment } from '@thrivehive/segment';
+import { VueSegment } from '@thrivehive/segment';
 
-Vue.directive(vueSegment.name, vueSegment);
+Vue.directive(VueSegment.name, VueSegment);
 ```
 
-Example usage:
+Example usage with button:
 
 ```html
 <template>
   <div>
     <button
-      v-segment-event:click="{
-        message: 'User clicked button',
-        data: trackingInfo
+      v-segment:click="{
+        message: 'User clicked button'
       }"
     >
       Click me
@@ -121,4 +124,36 @@ Example usage:
 </template>
 ```
 
-**Note:** Data passed to directive must be an object reference.
+Example usage with form:
+
+```html
+<template>
+  <div>
+    <form
+      v-segment:submit="{
+        message: 'User submitted form',
+        data: trackingInfo
+      }"
+    >
+      <input type="text" v-model="value" />
+    </form>
+  </div>
+</template>
+
+<script>
+export default {
+  data: () => ({
+    value: null
+  }),
+  computed: {
+    trackingInfo() {
+      return {
+        value: this.value
+      }
+    }
+  }
+}
+</script>
+```
+
+**Note:** Data passed to directive must be an object reference, it is the only way to guarantee reactive data stays current.
