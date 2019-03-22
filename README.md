@@ -5,6 +5,8 @@
 
 Implements Segment.io `identify`, `page`, and `track` methods, and adds a `setup` function to inject the segment script into your page with your write key.
 
+Also removes the need to paste the segment JS snippet into `<head>`.
+
 A [Vue directive](#vue-directive) is also included to make event tracking easier.
 
 ## Installation
