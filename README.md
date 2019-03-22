@@ -93,38 +93,60 @@ router.afterEach((to) => {
 
 ```
 
-## Vue directive
+## Vue plugin
 
-More info about [Vue directives](https://vuejs.org/v2/guide/custom-directive.html).
+`@thrivehive/segment` also includes a Vue plugin. The plugin will handle the `setup` function for you, and adds a Vue directive for easy event tracking. More info about [Vue directives](https://vuejs.org/v2/guide/custom-directive.html).
 
-The directive argument is the event name you want to listen for. Note that this is a Vue event listener.
+### Setup Vue plugin
 
-Setup the directive:
+Setup the plugin:
 
 ```js
 import Vue from 'vue';
 import { VueSegment } from '@thrivehive/segment';
 
-Vue.directive(VueSegment.name, VueSegment);
+Vue.use(VueSegment, {
+  key: '<YOUR WRITE KEY>'
+});
 ```
 
-Example usage with button:
+### Argument
+
+The directive accepts a single argument, the `eventName` to listen for. By default, this is a Vue event listener, not native.
+
+Example using button:
 
 ```html
 <template>
-  <div>
-    <button
-      v-segment:click="{
-        message: 'User clicked button'
-      }"
-    >
-      Click me
-    </button>
-  </div>
+  <button v-segment:click="'User clicked button'">
+    Click me
+  </button>
 </template>
 ```
 
-Example usage with form:
+### Value
+
+The expression passed to the directive may one of the following:
+
+- `<string>`
+  - **description**: Message to send to segment.io
+- `<object>`
+  - `message`
+    - **type**: `<string>`
+    - **description**: Message to send to segment.io
+  - `data`
+    - **type**: `<object>`
+    - **description**: Data to send to segment.io, must be an object, data that may change should be a reference to a computed property that returns an object.
+
+Example usage with message only:
+
+```html
+<template>
+  <div v-segment:mouseenter="User hovered over div"></div>
+</template>
+```
+
+Example usage with verbose syntax:
 
 ```html
 <template>
@@ -156,4 +178,14 @@ export default {
 </script>
 ```
 
-**Note:** Data passed to directive must be an object reference, it is the only way to guarantee reactive data stays current.
+### Modifier
+
+It is also possible to listen to a native event instead of a Vue event. Just like with normal Vue event listeners, you can use the `.native` modifier to use the native event listener:
+
+```html
+<template>
+  <button v-segment:click.native="'User clicked button'">
+    Click me
+  </button>
+</template>
+```
