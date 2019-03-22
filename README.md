@@ -97,7 +97,7 @@ router.afterEach((to) => {
 
 More info about [Vue directives](https://vuejs.org/v2/guide/custom-directive.html).
 
-The directive argument is the event name you want to listen for. Note that this is a native DOM event listener, not a Vue event.
+The directive argument is the event name you want to listen for. Note that this is a Vue event listener.
 
 Setup the directive:
 
