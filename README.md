@@ -142,7 +142,7 @@ Example usage with message only:
 
 ```html
 <template>
-  <div v-segment:mouseenter="User hovered over div"></div>
+  <div v-segment:mouseenter="'User hovered over div'"></div>
 </template>
 ```
 
